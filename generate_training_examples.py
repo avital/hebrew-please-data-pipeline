@@ -31,10 +31,13 @@ def make_training_examples():
 def extract_random_augmented_spectrogram(input_wav_file, output_file_prefix):
     spectrogram_png_file = '{0}.spectrogram.png'.format(output_file_prefix)
 
+    # compute all random factors before checking if file already
+    # exists, as to ensure reproducible runs
     should_add_noise = random.uniform(0, 1) < 0.4
     noise_factor = random.uniform(0, 0.1)
     start_position_factor = random.uniform(0, 1)
     stretch_factor = math.exp(random.uniform(math.log(0.7), math.log(1.42)))
+
     if not os.path.isfile(spectrogram_png_file):
         random_segment_file = '{0}.segment.wav'.format(output_file_prefix)
         cut_segment(input_wav_file, start_position_factor, random_segment_file)
