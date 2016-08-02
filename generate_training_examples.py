@@ -10,7 +10,7 @@ from split_training_and_validation import AUDIO_SEGMENTS_DIR
 from utils import make_sure_path_exists
 
 NUM_TRAINING_EXAMPLES = 100000
-TRAINING_EXAMPLES_DIR = 'data/training/v0'
+TRAINING_EXAMPLES_DIR = 'data/nn/v0/train'
 
 categories = sorted(os.listdir(AUDIO_SEGMENTS_DIR))
 audio_segments = {category: sorted(os.listdir('{0}/{1}/train'.format(AUDIO_SEGMENTS_DIR, category))) for category in categories}
