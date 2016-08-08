@@ -18,7 +18,7 @@ def split(videos_dict):
     """
     for category in videos_dict:
         for url in videos_dict[category]:
-            video_id = url[-11:]
+            video_id = url
             video_wav_file = '{0}/{1}/{2}/audio.wav'.format(AUDIO_DIR, category, video_id)
 
             train_segments_dir = '{0}/{1}/train'.format(AUDIO_SEGMENTS_DIR, category)
@@ -63,4 +63,8 @@ def extract_segment(input_wav_file, start_sec, num_secs, output_wav_file):
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     videos_dict = read_videos_dict()
+    videos_dict = {
+        'english-avital': videos_dict['english-avital'],
+        'hebrew-avital': videos_dict['hebrew-avital']
+    }
     split(videos_dict)
